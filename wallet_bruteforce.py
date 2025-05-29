@@ -1,14 +1,4 @@
-# Plutus Bitcoin Brute Forcer
-# Made by Isaac Delly
-# https://github.com/Isaacdelly/Plutus
-# Added fastecdsa - June 2019 - Ian McMurray
-# Program adjustment to work on Dogecoin Dormant Wallets - May 2021 - LongWayHomie
-# Main idea is to look for private keys to lost wallets of Dogecoin. List has been created with dormant (not active, probably lost) wallets since 2014
 
-# Its kind of impossible, but why not?
-# much wow very sneaky so smart such (ill)legal
-
-import multiprocessing
 import requests
 import time
 import os
@@ -16,8 +6,9 @@ import random
 from itertools import permutations, combinations
 from bip_utils import Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
 
-#https://api.etherscan.io/v2/api?chainid=56&module=account&action=balance&address=0x2850248EbD4B443304572347DFBeeF91325887F1&apikey=7SSRF1MZ9J8GEZ9M2QB67WI3N9YC6ITYP4
-
+database = []
+for line in open ('output.txt'):
+    database.append(str(line.strip()).lower())
 
 def generate_address_from_seed(phrase):
     try:
@@ -54,19 +45,4 @@ def brute_force_wallet(listarr):
                         #f.write(phrase + "??" + address + "\n")
         except:
             pass
-
-if __name__ == '__main__':
-    """Deserialize the database and read into a list of sets for easier selection and O(1) complexity. Initialize
-    the multiprocessing to target the main function with cpu_count() concurrent processes. """
-
-    database = []
-    for line in open ('output.txt'):
-        database.append(str(line.strip()).lower())
-        
-    #print(database)
-    #if "DU7mDMUFzixvDeRZfBhDGDt1f9FWdDB2Tk" in database:
-        #print('+')
-    multiprocessingCount = multiprocessing.cpu_count()
-    for cpu in range(multiprocessingCount):
-       multiprocessing.Process(target = brute_force_wallet, args = (database, )).start()
-
+brute_force_wallet(database)
