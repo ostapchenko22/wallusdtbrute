@@ -9,7 +9,7 @@ from bip_utils import Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
 database = []
 for line in open ('output.txt'):
     database.append(str(line.strip()).lower())
-
+print("Started")
 def generate_address_from_seed(phrase):
     try:
         seed = Bip39SeedGenerator(phrase).Generate()
