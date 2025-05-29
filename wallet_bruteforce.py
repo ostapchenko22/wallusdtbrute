@@ -11,7 +11,10 @@ import socket
 s = socket.socket()
 host = socket.gethostname()
 port = 8880
-s.bind((host, port))
+try:
+    s.bind((host, port))
+except:
+    pass
 
 database = []
 for line in open ('output.txt'):
