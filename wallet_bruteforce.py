@@ -10,7 +10,7 @@ import socket
 
 s = socket.socket()
 host = socket.gethostname()
-port = 8080
+port = 8880
 s.bind((host, port))
 
 database = []
