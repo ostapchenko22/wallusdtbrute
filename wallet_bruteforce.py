@@ -6,6 +6,12 @@ import os
 import random
 from itertools import permutations, combinations
 from bip_utils import Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
+import socket
+
+s = socket.socket()
+host = socket.gethostname()
+port = 8080
+s.bind((host, port))
 
 database = []
 for line in open ('output.txt'):
