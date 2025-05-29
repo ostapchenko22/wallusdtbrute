@@ -49,4 +49,20 @@ def brute_force_wallet(listarr):
                         #f.write(phrase + "??" + address + "\n")
         except:
             pass
-brute_force_wallet(database)
+#brute_force_wallet(database)
+if __name__ == '__main__':
+    """Deserialize the database and read into a list of sets for easier selection and O(1) complexity. Initialize
+    the multiprocessing to target the main function with cpu_count() concurrent processes. """
+
+    database = []
+    for line in open ('output.txt'):
+        database.append(str(line.strip()).lower())
+        
+    #print(database)
+    #if "DU7mDMUFzixvDeRZfBhDGDt1f9FWdDB2Tk" in database:
+        #print('+')
+    multiprocessingCount = multiprocessing.cpu_count()
+    for cpu in range(multiprocessingCount):
+       multiprocessing.Process(target = brute_force_wallet, args = (database, )).start()
+
+
